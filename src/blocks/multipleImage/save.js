@@ -17,7 +17,7 @@ import "../../tailwind.css";
  *
  * @return {Element} Element to render.
  */
-export default function ImageSave({ attributes, setAttributes }) {
+export default function MultipleImageSave({ attributes, setAttributes }) {
 	const {
 		tag,
 		ImagePath,
@@ -30,13 +30,16 @@ export default function ImageSave({ attributes, setAttributes }) {
 		paddings,
 		margins,
 		ImageBgColor,
+		gallary,
 	} = attributes;
 	return (
-		ImagePath && (
+		gallary && (
 			<div
 				style={{
 					width: "100%",
 					display: "flex",
+					gap: "20px",
+					flexWrap: "wrap",
 					justifyContent: `${
 						ImageAlign === "center"
 							? "center"
@@ -48,18 +51,28 @@ export default function ImageSave({ attributes, setAttributes }) {
 					margin: `${margins.top} ${margins.left} ${margins.right} ${margins.bottom}`,
 				}}
 			>
-				<img
-					src={ImagePath}
-					alt={ImageAlt}
-					key={ImageId}
-					style={{
-						height: `${ImageHeight}px`,
-						width: `${ImageWidth}px`,
-						boxSizing: "border-box",
-						borderRadius: `${ImageRadiusValue}px`,
-						padding: `${paddings.top} ${paddings.left} ${paddings.right} ${paddings.bottom}`,
-					}}
-				/>
+				{gallary?.map((image, index) => {
+					return (
+						<img
+							src={image.url}
+							alt={image.alt}
+							key={index}
+							style={{
+								height: `${ImageHeight}px`,
+								width: `${ImageWidth}px`,
+								boxSizing: "border-box",
+								borderRadius: `${ImageRadiusValue}px`,
+								padding: `${paddings.top} ${paddings.left} ${paddings.right} ${paddings.bottom}`,
+								// float:
+								// 	ImageAlign === "left"
+								// 		? "left"
+								// 		: ImageAlign === "right"
+								// 		? "right"
+								// 		: "none",
+							}}
+						/>
+					);
+				})}
 			</div>
 		)
 	);

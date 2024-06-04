@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "create-block/imageblog",
+  "name": "create-block/multipleimageblog",
   "version": "0.1.0",
   "title": "P tag",
   "category": "widgets",
   "icon": "smiley",
-  "description": "A block for image.",
+  "description": "A block for multipleimage.",
   "example": {},
   "supports": {
     "html": false,
@@ -21,6 +21,9 @@
     "tag": {
       "type": "string",
       "default": "h1"
+    },
+    "gallary": {
+      "type": "array"
     },
     "ImagePath": {
       "type": "string",
@@ -68,6 +71,6 @@
       }
     }
   },
-  "textdomain": "imageblock",
+  "textdomain": "multipleimageblock",
   "editorScript": "file:../../index.js"
 }

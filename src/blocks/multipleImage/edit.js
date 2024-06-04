@@ -42,7 +42,16 @@ import {
 	RangeControl,
 	ToolbarButton,
 } from "@wordpress/components";
-import { pin, list, grid, filter, Icon, trash, edit } from "@wordpress/icons";
+import {
+	pin,
+	list,
+	grid,
+	filter,
+	Icon,
+	trash,
+	edit,
+	gallery,
+} from "@wordpress/icons";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -61,7 +70,7 @@ import "../../tailwind.css";
  *
  * @return {Element} Element to render.
  */
-export default function ImageEdit({ attributes, setAttributes }) {
+export default function MultipleImageEdit({ attributes, setAttributes }) {
 	const {
 		tag,
 		ImagePath,
@@ -74,6 +83,7 @@ export default function ImageEdit({ attributes, setAttributes }) {
 		paddings,
 		margins,
 		ImageBgColor,
+		gallary,
 	} = attributes;
 	const HandleChangeFontAlign = (align) => {
 		setAttributes({ ImageAlign: align || "left" });
@@ -83,26 +93,22 @@ export default function ImageEdit({ attributes, setAttributes }) {
 			<BlockControls>
 				<AlignmentToolbar value={ImageAlign} onChange={HandleChangeFontAlign} />
 				<ToolbarGroup>
-					{ImagePath && (
+					{gallary && (
 						<ToolbarButton
 							icon={trash}
 							label={__("delete image", "firstblog")}
-							onClick={() =>
-								setAttributes({ ImageId: "", ImagePath: "", ImageAlt: "" })
-							}
+							onClick={() => setAttributes({ gallary: "" })}
 						></ToolbarButton>
 					)}
-					{ImagePath && (
+					{gallary && (
 						<MediaUpload
 							onSelect={(media) => {
-								setAttributes({
-									ImageId: media?.id,
-									ImagePath: media?.url,
-									ImageAlt: media?.alt || "this image",
-								});
+								setAttributes({ gallary: media });
 							}}
+							gallery={true}
+							multiple={true}
 							allowedTypes={["image"]}
-							value={ImageId || "35"}
+							value={gallary.map((image) => image.id)}
 							render={({ open }) => (
 								<ToolbarButton onClick={open} icon="edit"></ToolbarButton>
 							)}
@@ -111,7 +117,7 @@ export default function ImageEdit({ attributes, setAttributes }) {
 				</ToolbarGroup>
 			</BlockControls>
 			<div
-				className={`w-full flex ${
+				className={`w-full flex gap-5 flex-wrap ${
 					ImageAlign === "center"
 						? "justify-center"
 						: ImageAlign === "left"
@@ -123,40 +129,38 @@ export default function ImageEdit({ attributes, setAttributes }) {
 					margin: `${margins.top} ${margins.left} ${margins.right} ${margins.bottom}`,
 				}}
 			>
-				{ImagePath ? (
-					ImagePath && (
-						<img
-							src={ImagePath}
-							alt={ImageAlt}
-							key={ImageId}
-							style={{
-								height: `${ImageHeight}px`,
-								width: `${ImageWidth}px`,
-								boxSizing: "border-box",
-								borderRadius: `${ImageRadiusValue}px`,
-								padding: `${paddings.top} ${paddings.left} ${paddings.right} ${paddings.bottom}`,
-								// float:
-								// 	ImageAlign === "left"
-								// 		? "left"
-								// 		: ImageAlign === "right"
-								// 		? "right"
-								// 		: "none",
-							}}
-						/>
-					)
+				{gallary ? (
+					gallary?.map((image, index) => {
+						return (
+							<img
+								src={image.url}
+								alt={image.alt}
+								key={index}
+								style={{
+									height: `${ImageHeight}px`,
+									width: `${ImageWidth}px`,
+									boxSizing: "border-box",
+									borderRadius: `${ImageRadiusValue}px`,
+									padding: `${paddings.top} ${paddings.left} ${paddings.right} ${paddings.bottom}`,
+									// float:
+									// 	ImageAlign === "left"
+									// 		? "left"
+									// 		: ImageAlign === "right"
+									// 		? "right"
+									// 		: "none",
+								}}
+							/>
+						);
+					})
 				) : (
 					<MediaPlaceholder
 						onSelect={(media) => {
-							setAttributes({
-								ImageId: media.id,
-								ImagePath: media.url,
-								ImageAlt: media.alt || "this image",
-							});
+							setAttributes({ gallary: media });
 						}}
 						allowedTypes={["image"]}
-						multiple={false}
+						multiple={true}
 						labels={{
-							title: "Insert Image",
+							title: "Insert Images",
 							instructions:
 								"Drag & drop an image here or select an image from your library.",
 						}}

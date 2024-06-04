@@ -24,6 +24,7 @@ import metadata from "./block.json";
 import metadataParagraph from "./blocks/paragraph/block.json";
 import metadataHeadTag from "./blocks/headtag/block.json";
 import metadataImageTag from "./blocks/Image/block.json";
+import metadataMultipleImageTag from "./blocks/multipleImage/block.json";
 
 import ParagraphEdit from "./blocks/paragraph/edit";
 import ParagraphSave from "./blocks/paragraph/save";
@@ -33,6 +34,9 @@ import HeadSave from "./blocks/headtag/save";
 
 import ImageEdit from "./blocks/Image/edit";
 import ImageSave from "./blocks/Image/save";
+
+import MultipleImageEdit from "./blocks//multipleImage/edit";
+import MultipleImageSave from "./blocks/multipleImage/save";
 /**
  * Every block starts by registering a new block type definition.
  *
@@ -87,4 +91,17 @@ registerBlockType(metadataImageTag.name, {
 	save: ImageSave,
 	attributes: metadataImageTag.attributes,
 	supports: metadataImageTag.supports,
+});
+
+registerBlockType(metadataMultipleImageTag.name, {
+	icon: {
+		src: "images-alt",
+		foreground: "#fff",
+		background: "#4c967d",
+	},
+	title: "MultiImage",
+	edit: MultipleImageEdit,
+	save: MultipleImageSave,
+	attributes: metadataMultipleImageTag.attributes,
+	supports: metadataMultipleImageTag.supports,
 });
