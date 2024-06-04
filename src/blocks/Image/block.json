@@ -1,0 +1,70 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/imageblog",
+	"version": "0.1.0",
+	"title": "P tag",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "A block for image.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": true,
+		"anchor": true
+	},
+	"attributes": {
+		"ImageAlign": {
+			"type": "string",
+			"default": "left"
+		},
+		"tag": {
+			"type": "string",
+			"default": "h1"
+		},
+		"ImagePath": {
+			"type": "string",
+			"default": ""
+		},
+		"ImageId": {
+			"type": "string",
+			"default": ""
+		},
+		"ImageAlt": {
+			"type": "string",
+			"default": ""
+		},
+		"ImageHeight": {
+			"type": "number",
+			"default": 200
+		},
+		"ImageWidth": {
+			"type": "number",
+			"default": 200
+		},
+		"ImageRadiusValue": {
+			"type": "number",
+			"default": 1
+		},
+		"paddings": {
+			"type": "object",
+			"default": {
+				"top": "0px",
+				"bottom": "0px",
+				"left": "0px",
+				"right": "0px"
+			}
+		},
+		"margins": {
+			"type": "object",
+			"default": {
+				"top": "0px",
+				"bottom": "0px",
+				"left": "0px",
+				"right": "0px"
+			}
+		}
+	},
+	"textdomain": "imageblock",
+	"editorScript": "file:../../index.js"
+}

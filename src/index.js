@@ -4,7 +4,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 import { registerBlockType } from "@wordpress/blocks";
-import { pin, list, grid, paragraph, heading } from "@wordpress/icons";
+import { pin, list, grid, paragraph, heading, image } from "@wordpress/icons";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -23,6 +23,7 @@ import save from "./save";
 import metadata from "./block.json";
 import metadataParagraph from "./blocks/paragraph/block.json";
 import metadataHeadTag from "./blocks/headtag/block.json";
+import metadataImageTag from "./blocks/Image/block.json";
 
 import ParagraphEdit from "./blocks/paragraph/edit";
 import ParagraphSave from "./blocks/paragraph/save";
@@ -30,6 +31,8 @@ import ParagraphSave from "./blocks/paragraph/save";
 import HeadEdit from "./blocks/headtag/edit";
 import HeadSave from "./blocks/headtag/save";
 
+import ImageEdit from "./blocks/Image/edit";
+import ImageSave from "./blocks/Image/save";
 /**
  * Every block starts by registering a new block type definition.
  *
@@ -71,4 +74,17 @@ registerBlockType(metadataHeadTag.name, {
 	save: HeadSave,
 	attributes: metadataHeadTag.attributes,
 	supports: metadataHeadTag.supports,
+});
+
+registerBlockType(metadataImageTag.name, {
+	icon: {
+		src: image,
+		foreground: "#fff",
+		background: "#4c967d",
+	},
+	title: "Image tag",
+	edit: ImageEdit,
+	save: ImageSave,
+	attributes: metadataImageTag.attributes,
+	supports: metadataImageTag.supports,
 });
