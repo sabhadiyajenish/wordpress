@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/paragraphblog",
+  "version": "0.1.0",
+  "title": "P tag",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "A block for p tags.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "align": true,
+    "anchor": true
+  },
+  "attributes": {
+    "ParagrapText": {
+      "type": "string",
+      "default": ""
+    },
+    "ParagrapTextSize": {
+      "type": "string"
+    },
+    "ParagrapTextAlign": {
+      "type": "string"
+    },
+    "ParagrapTextColor": {
+      "type": "string"
+    },
+    "ParagrapBgColor": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string",
+      "default": "h1"
+    },
+    "Radius": {
+      "type": "number",
+      "default": 0
+    },
+    "paddings": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "bottom": "0px",
+        "left": "0px",
+        "right": "0px"
+      }
+    },
+    "margins": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "bottom": "0px",
+        "left": "0px",
+        "right": "0px"
+      }
+    }
+  },
+  "textdomain": "pblock",
+  "editorScript": "file:../../index.js"
+}

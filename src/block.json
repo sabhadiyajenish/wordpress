@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/testblock",
+	"version": "0.1.0",
+	"title": "Pushpa",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": true,
+		"anchor": true
+	},
+	"attributes": {
+		"text": {
+			"type": "string",
+			"default": "Hello Gujrat"
+		},
+		"content": {
+			"type": "string"
+		},
+		"multiContent": {
+			"type": "string"
+		},
+		"multiParagraph": {
+			"type": "string"
+		},
+		"tag": {
+			"type": "string"
+		},
+		"colorPelete": {
+			"type": "string"
+		},
+		"togglecontent": {
+			"type": "boolean"
+		},
+		"gradiuntColor": {
+			"type": "string"
+		},
+		"paddings": {
+			"type": "object",
+			"default": {
+				"top": "10px",
+				"bottom": "15px",
+				"left": "20px",
+				"right": "30px"
+			}
+		},
+		"imageOne": {
+			"type": "string"
+		},
+		"imageMulti": {
+			"type": "array"
+		}
+	},
+	"textdomain": "testblock",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

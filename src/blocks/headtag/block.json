@@ -1,0 +1,62 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/headblog",
+	"version": "0.1.0",
+	"title": "Head tag",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "A block for head tags.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": true,
+		"anchor": true
+	},
+	"attributes": {
+		"HeadText": {
+			"type": "string",
+			"default": ""
+		},
+		"HeadTextSize": {
+			"type": "string"
+		},
+		"HeadTextAlign": {
+			"type": "string"
+		},
+		"HeadTextColor": {
+			"type": "string"
+		},
+		"HeadBgColor": {
+			"type": "string"
+		},
+		"HeadTags": {
+			"type": "string",
+			"default": "h1"
+		},
+		"Radius": {
+			"type": "number",
+			"default": 0
+		},
+		"paddings": {
+			"type": "object",
+			"default": {
+				"top": "0px",
+				"bottom": "0px",
+				"left": "0px",
+				"right": "0px"
+			}
+		},
+		"margins": {
+			"type": "object",
+			"default": {
+				"top": "0px",
+				"bottom": "0px",
+				"left": "0px",
+				"right": "0px"
+			}
+		}
+	},
+	"textdomain": "headblock",
+	"editorScript": "file:../../index.js"
+}
