@@ -19,7 +19,7 @@
       "default": ""
     },
     "HeadTextSize": {
-      "type": "string"
+      "type": "number"
     },
     "HeadTextAlign": {
       "type": "string"
@@ -35,6 +35,14 @@
       "default": "h1"
     },
     "Radius": {
+      "type": "number",
+      "default": 0
+    },
+    "LetterSpacing": {
+      "type": "number",
+      "default": 0
+    },
+    "WordSpacing": {
       "type": "number",
       "default": 0
     },

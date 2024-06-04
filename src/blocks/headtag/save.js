@@ -26,16 +26,21 @@ export default function HeadSave({ attributes, setAttributes }) {
 		Radius,
 		paddings,
 		margins,
+		LetterSpacing,
+		WordSpacing,
 	} = attributes;
 	return (
 		<RichText.Content
 			style={{
-				fontSize: HeadTextSize,
+				fontSize: `${HeadTextSize}px`,
 				textAlign: HeadTextAlign,
 				color: HeadTextColor,
 				backgroundColor: HeadBgColor,
 				borderRadius: `${Radius}px`,
 				padding: `${paddings.top} ${paddings.left} ${paddings.right} ${paddings.bottom}`,
+				letterSpacing: LetterSpacing,
+				wordSpacing: WordSpacing,
+
 				margin: `${margins.top} ${margins.left} ${margins.right} ${margins.bottom}`,
 			}}
 			tagName={HeadTags}

@@ -29,7 +29,7 @@ export default function ParagraphSave({ attributes, setAttributes }) {
 	return (
 		<RichText.Content
 			style={{
-				fontSize: ParagrapTextSize,
+				fontSize: `${ParagrapTextSize}px`,
 				textAlign: ParagrapTextAlign,
 				color: ParagrapTextColor,
 				backgroundColor: ParagrapBgColor,

@@ -19,7 +19,8 @@
 			"default": ""
 		},
 		"ParagrapTextSize": {
-			"type": "string"
+			"type": "number",
+			"default": 20
 		},
 		"ParagrapTextAlign": {
 			"type": "string"

@@ -2,6 +2,82 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@wordpress/icons/build-module/icon/index.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/icon/index.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * WordPress dependencies
+ */
+
+
+/** @typedef {{icon: JSX.Element, size?: number} & import('@wordpress/primitives').SVGProps} IconProps */
+
+/**
+ * Return an SVG icon.
+ *
+ * @param {IconProps}                                 props icon is the SVG component to render
+ *                                                          size is a number specifiying the icon size in pixels
+ *                                                          Other props will be passed to wrapped SVG component
+ * @param {import('react').ForwardedRef<HTMLElement>} ref   The forwarded ref to the SVG element.
+ *
+ * @return {JSX.Element}  Icon component
+ */
+function Icon({
+  icon,
+  size = 24,
+  ...props
+}, ref) {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.cloneElement)(icon, {
+    width: size,
+    height: size,
+    ...props,
+    ref
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(Icon));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/filter.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/filter.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+/**
+ * WordPress dependencies
+ */
+
+const filter = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__.Path, {
+  d: "M12 4 4 19h16L12 4zm0 3.2 5.5 10.3H12V7.2z"
+}));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (filter);
+//# sourceMappingURL=filter.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@wordpress/icons/build-module/library/grid.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@wordpress/icons/build-module/library/grid.js ***!
@@ -142,6 +218,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/filter.js");
 /* harmony import */ var _paragraph_editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../paragraph/editor.scss */ "./src/blocks/paragraph/editor.scss");
 /* harmony import */ var _tailwind_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../tailwind.css */ "./src/tailwind.css");
 
@@ -193,7 +271,9 @@ function HeadEdit({
     HeadTags,
     Radius,
     paddings,
-    margins
+    margins,
+    LetterSpacing,
+    WordSpacing
   } = attributes;
   const [values, setValues] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     top: "0px",
@@ -201,6 +281,7 @@ function HeadEdit({
     right: "0%",
     bottom: "0px"
   });
+  const [toggleSize, setToggleSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const HandleChangeFontSize = size => {
     setAttributes({
       HeadTextSize: size
@@ -262,17 +343,24 @@ function HeadEdit({
     onChange: v => setAttributes({
       HeadText: v
     })
-    // allowedFormats={["core/bold", "core/italic", "core/link"]}
+    // allowedFormats={[
+    // 	"core/bold",
+    // 	"core/italic",
+    // 	"core/link",
+    // 	"core/underline",
+    // ]}
     ,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add Heading tag content..", "thirdblock"),
     style: {
-      fontSize: HeadTextSize,
+      fontSize: `${HeadTextSize}px`,
       textAlign: HeadTextAlign,
       color: HeadTextColor,
       backgroundColor: HeadBgColor,
       minWidth: "1300px",
       padding: `${paddings.top} ${paddings.left} ${paddings.right} ${paddings.bottom}`,
       margin: `${margins.top} ${margins.left} ${margins.right} ${margins.bottom}`,
+      letterSpacing: LetterSpacing,
+      wordSpacing: WordSpacing,
       borderRadius: `${Radius}px`
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
@@ -298,29 +386,58 @@ function HeadEdit({
     }),
     min: 0,
     max: 200
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: "Letter Spacing",
+    value: LetterSpacing,
+    onChange: value => setAttributes({
+      LetterSpacing: value
+    }),
+    min: 0,
+    max: 20
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: "Word Spacing",
+    value: WordSpacing,
+    onChange: value => setAttributes({
+      WordSpacing: value
+    }),
+    min: 0,
+    max: 20
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex justify-between items-center"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "my_custom_color"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Content Size", "blockss")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Content Size", "blockss")), " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
+    className: " cursor-pointer",
+    onClick: () => setToggleSize(prev => !prev)
+  })), toggleSize ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    className: "mt-3",
+    value: HeadTextSize,
+    onChange: value => HandleChangeFontSize(value),
+    min: 0,
+    max: 200,
+    renderTooltipContent: value => `${value} px`
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mt-5 flex items-center justify-around gap-1"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
-    onClick: () => HandleChangeFontSize("16px"),
+    onClick: () => HandleChangeFontSize(16),
     className: "text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
   }, "S"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
-    onClick: () => HandleChangeFontSize("20px"),
+    onClick: () => HandleChangeFontSize(20),
     className: "text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
   }, "M"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
-    onClick: () => HandleChangeFontSize("24px"),
+    onClick: () => HandleChangeFontSize(24),
     className: "text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
   }, "L"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
-    onClick: () => HandleChangeFontSize("28px"),
+    onClick: () => HandleChangeFontSize(28),
     className: "text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2"
   }, "Xl"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
-    onClick: () => HandleChangeFontSize("32px"),
+    onClick: () => HandleChangeFontSize(32),
     className: "text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2"
   }, "Xll"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Padding", "secondblock"),
@@ -390,16 +507,20 @@ function HeadSave({
     HeadTags,
     Radius,
     paddings,
-    margins
+    margins,
+    LetterSpacing,
+    WordSpacing
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     style: {
-      fontSize: HeadTextSize,
+      fontSize: `${HeadTextSize}px`,
       textAlign: HeadTextAlign,
       color: HeadTextColor,
       backgroundColor: HeadBgColor,
       borderRadius: `${Radius}px`,
       padding: `${paddings.top} ${paddings.left} ${paddings.right} ${paddings.bottom}`,
+      letterSpacing: LetterSpacing,
+      wordSpacing: WordSpacing,
       margin: `${margins.top} ${margins.left} ${margins.right} ${margins.bottom}`
     },
     tagName: HeadTags,
@@ -427,6 +548,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/filter.js");
 /* harmony import */ var _paragraph_editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../paragraph/editor.scss */ "./src/blocks/paragraph/editor.scss");
 /* harmony import */ var _tailwind_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../tailwind.css */ "./src/tailwind.css");
 
@@ -479,6 +602,7 @@ function ParagraphEdit({
     paddings,
     margins
   } = attributes;
+  const [toggleSize, setToggleSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const HandleChangeFontSize = size => {
     setAttributes({
       ParagrapTextSize: size
@@ -528,7 +652,7 @@ function ParagraphEdit({
     ,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add Paragraph content..", "thirdblock"),
     style: {
-      fontSize: ParagrapTextSize,
+      fontSize: `${ParagrapTextSize}px`,
       textAlign: ParagrapTextAlign,
       color: ParagrapTextColor,
       backgroundColor: ParagrapBgColor,
@@ -559,9 +683,22 @@ function ParagraphEdit({
     }),
     min: 0,
     max: 200
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex justify-between items-center"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "my_custom_color"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Content Size", "blockss")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Content Size", "blockss")), " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
+    className: " cursor-pointer",
+    onClick: () => setToggleSize(prev => !prev)
+  })), toggleSize ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    className: "mt-3",
+    value: ParagrapTextSize,
+    onChange: value => HandleChangeFontSize(value),
+    min: 0,
+    max: 200,
+    renderTooltipContent: value => `${value} px`
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mt-5 flex items-center justify-around gap-1"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
@@ -654,7 +791,7 @@ function ParagraphSave({
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     style: {
-      fontSize: ParagrapTextSize,
+      fontSize: `${ParagrapTextSize}px`,
       textAlign: ParagrapTextAlign,
       color: ParagrapTextColor,
       backgroundColor: ParagrapBgColor,
@@ -1418,6 +1555,16 @@ module.exports = window["wp"]["components"];
 
 /***/ }),
 
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["element"];
+
+/***/ }),
+
 /***/ "@wordpress/i18n":
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
@@ -1454,7 +1601,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
   \***************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/headblog","version":"0.1.0","title":"Head tag","category":"widgets","icon":"smiley","description":"A block for head tags.","example":{},"supports":{"html":false,"align":true,"anchor":true},"attributes":{"HeadText":{"type":"string","default":""},"HeadTextSize":{"type":"string"},"HeadTextAlign":{"type":"string"},"HeadTextColor":{"type":"string"},"HeadBgColor":{"type":"string"},"HeadTags":{"type":"string","default":"h1"},"Radius":{"type":"number","default":0},"paddings":{"type":"object","default":{"top":"0px","bottom":"0px","left":"0px","right":"0px"}},"margins":{"type":"object","default":{"top":"0px","bottom":"0px","left":"0px","right":"0px"}}},"textdomain":"headblock","editorScript":"file:../../index.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/headblog","version":"0.1.0","title":"Head tag","category":"widgets","icon":"smiley","description":"A block for head tags.","example":{},"supports":{"html":false,"align":true,"anchor":true},"attributes":{"HeadText":{"type":"string","default":""},"HeadTextSize":{"type":"number"},"HeadTextAlign":{"type":"string"},"HeadTextColor":{"type":"string"},"HeadBgColor":{"type":"string"},"HeadTags":{"type":"string","default":"h1"},"Radius":{"type":"number","default":0},"LetterSpacing":{"type":"number","default":0},"WordSpacing":{"type":"number","default":0},"paddings":{"type":"object","default":{"top":"0px","bottom":"0px","left":"0px","right":"0px"}},"margins":{"type":"object","default":{"top":"0px","bottom":"0px","left":"0px","right":"0px"}}},"textdomain":"headblock","editorScript":"file:../../index.js"}');
 
 /***/ }),
 
@@ -1464,7 +1611,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
   \*****************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/paragraphblog","version":"0.1.0","title":"P tag","category":"widgets","icon":"smiley","description":"A block for p tags.","example":{},"supports":{"html":false,"align":true,"anchor":true},"attributes":{"ParagrapText":{"type":"string","default":""},"ParagrapTextSize":{"type":"string"},"ParagrapTextAlign":{"type":"string"},"ParagrapTextColor":{"type":"string"},"ParagrapBgColor":{"type":"string"},"tag":{"type":"string","default":"h1"},"Radius":{"type":"number","default":0},"paddings":{"type":"object","default":{"top":"0px","bottom":"0px","left":"0px","right":"0px"}},"margins":{"type":"object","default":{"top":"0px","bottom":"0px","left":"0px","right":"0px"}}},"textdomain":"pblock","editorScript":"file:../../index.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/paragraphblog","version":"0.1.0","title":"P tag","category":"widgets","icon":"smiley","description":"A block for p tags.","example":{},"supports":{"html":false,"align":true,"anchor":true},"attributes":{"ParagrapText":{"type":"string","default":""},"ParagrapTextSize":{"type":"number","default":20},"ParagrapTextAlign":{"type":"string"},"ParagrapTextColor":{"type":"string"},"ParagrapBgColor":{"type":"string"},"tag":{"type":"string","default":"h1"},"Radius":{"type":"number","default":0},"paddings":{"type":"object","default":{"top":"0px","bottom":"0px","left":"0px","right":"0px"}},"margins":{"type":"object","default":{"top":"0px","bottom":"0px","left":"0px","right":"0px"}}},"textdomain":"pblock","editorScript":"file:../../index.js"}');
 
 /***/ })
 

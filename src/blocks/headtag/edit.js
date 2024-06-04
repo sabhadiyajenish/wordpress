@@ -18,6 +18,7 @@ import {
 	BlockControls,
 	AlignmentToolbar,
 	PanelColorSettings,
+	RichTextToolbarButton,
 } from "@wordpress/block-editor";
 import {
 	PanelBody,
@@ -41,7 +42,14 @@ import {
 	__experimentalHeading as Heading,
 	RangeControl,
 } from "@wordpress/components";
-import { pin, list, grid } from "@wordpress/icons";
+import {
+	pin,
+	list,
+	grid,
+	filter,
+	Icon,
+	formatUnderline,
+} from "@wordpress/icons";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -71,6 +79,8 @@ export default function HeadEdit({ attributes, setAttributes }) {
 		Radius,
 		paddings,
 		margins,
+		LetterSpacing,
+		WordSpacing,
 	} = attributes;
 	const [values, setValues] = useState({
 		top: "0px",
@@ -78,6 +88,7 @@ export default function HeadEdit({ attributes, setAttributes }) {
 		right: "0%",
 		bottom: "0px",
 	});
+	const [toggleSize, setToggleSize] = useState(false);
 	const HandleChangeFontSize = (size) => {
 		setAttributes({ HeadTextSize: size });
 	};
@@ -102,6 +113,7 @@ export default function HeadEdit({ attributes, setAttributes }) {
 	const handleTagChange = (newTag) => {
 		setAttributes({ HeadTags: newTag });
 	};
+
 	return (
 		<>
 			<BlockControls>
@@ -109,6 +121,7 @@ export default function HeadEdit({ attributes, setAttributes }) {
 					value={HeadTextAlign}
 					onChange={HandleChangeFontAlign}
 				/>
+
 				<ToolbarGroup>
 					{/* <ToolbarDropdownMenu
 					// icon="heading"
@@ -158,17 +171,23 @@ export default function HeadEdit({ attributes, setAttributes }) {
 				tagName={HeadTags}
 				value={HeadText}
 				onChange={(v) => setAttributes({ HeadText: v })}
-				// allowedFormats={["core/bold", "core/italic", "core/link"]}
+				// allowedFormats={[
+				// 	"core/bold",
+				// 	"core/italic",
+				// 	"core/link",
+				// 	"core/underline",
+				// ]}
 				placeholder={__("Add Heading tag content..", "thirdblock")}
 				style={{
-					fontSize: HeadTextSize,
+					fontSize: `${HeadTextSize}px`,
 					textAlign: HeadTextAlign,
 					color: HeadTextColor,
 					backgroundColor: HeadBgColor,
 					minWidth: "1300px",
 					padding: `${paddings.top} ${paddings.left} ${paddings.right} ${paddings.bottom}`,
 					margin: `${margins.top} ${margins.left} ${margins.right} ${margins.bottom}`,
-
+					letterSpacing: LetterSpacing,
+					wordSpacing: WordSpacing,
 					borderRadius: `${Radius}px`,
 				}}
 			/>
@@ -203,46 +222,93 @@ export default function HeadEdit({ attributes, setAttributes }) {
 						min={0}
 						max={200}
 					/>
-
-					<p className="my_custom_color">{__("Content Size", "blockss")}</p>
-
-					<div className="mt-5 flex items-center justify-around gap-1">
-						<button
-							type="button"
-							onClick={() => HandleChangeFontSize("16px")}
-							className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
-						>
-							S
-						</button>
-						<button
-							type="button"
-							onClick={() => HandleChangeFontSize("20px")}
-							className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
-						>
-							M
-						</button>
-						<button
-							type="button"
-							onClick={() => HandleChangeFontSize("24px")}
-							className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
-						>
-							L
-						</button>
-						<button
-							type="button"
-							onClick={() => HandleChangeFontSize("28px")}
-							className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2"
-						>
-							Xl
-						</button>
-						<button
-							type="button"
-							onClick={() => HandleChangeFontSize("32px")}
-							className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2"
-						>
-							Xll
-						</button>
+					<RangeControl
+						label="Letter Spacing"
+						value={LetterSpacing}
+						onChange={(value) => setAttributes({ LetterSpacing: value })}
+						min={0}
+						max={20}
+					/>
+					<RangeControl
+						label="Word Spacing"
+						value={WordSpacing}
+						onChange={(value) => setAttributes({ WordSpacing: value })}
+						min={0}
+						max={20}
+					/>
+					{/* <ButtonGroup>
+						{[
+							{ label: "S", value: "16px" },
+							{ label: "M", value: "20px" },
+							{ label: "L", value: "24px" },
+							{ label: "XL", value: "28px" },
+							{ label: "XXL", value: "32px" },
+						].map((size) => (
+							<Button
+								key={size.value}
+								isPrimary={HeadTextSize === size.value}
+								onClick={() => HandleChangeFontSize(size.value)}
+							>
+								{size.label}
+							</Button>
+						))}
+					</ButtonGroup> */}
+					<div className="flex justify-between items-center">
+						<p className="my_custom_color">{__("Content Size", "blockss")}</p>{" "}
+						<Icon
+							icon={filter}
+							className=" cursor-pointer"
+							onClick={() => setToggleSize((prev) => !prev)}
+						/>
 					</div>
+					{toggleSize ? (
+						<RangeControl
+							className="mt-3"
+							value={HeadTextSize}
+							onChange={(value) => HandleChangeFontSize(value)}
+							min={0}
+							max={200}
+							renderTooltipContent={(value) => `${value} px`}
+						/>
+					) : (
+						<div className="mt-5 flex items-center justify-around gap-1">
+							<button
+								type="button"
+								onClick={() => HandleChangeFontSize(16)}
+								className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
+							>
+								S
+							</button>
+							<button
+								type="button"
+								onClick={() => HandleChangeFontSize(20)}
+								className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
+							>
+								M
+							</button>
+							<button
+								type="button"
+								onClick={() => HandleChangeFontSize(24)}
+								className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
+							>
+								L
+							</button>
+							<button
+								type="button"
+								onClick={() => HandleChangeFontSize(28)}
+								className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2"
+							>
+								Xl
+							</button>
+							<button
+								type="button"
+								onClick={() => HandleChangeFontSize(32)}
+								className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-2 text-center me-2 mb-2"
+							>
+								Xll
+							</button>
+						</div>
+					)}
 				</PanelBody>
 				<PanelBody title={__("Padding", "secondblock")} initialOpen={false}>
 					<BoxControl
