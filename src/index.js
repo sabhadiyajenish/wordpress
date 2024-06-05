@@ -99,7 +99,7 @@ registerBlockType(metadataMultipleImageTag.name, {
 		foreground: "#fff",
 		background: "#4c967d",
 	},
-	title: "MultiImage",
+	title: "Gallary",
 	edit: MultipleImageEdit,
 	save: MultipleImageSave,
 	attributes: metadataMultipleImageTag.attributes,

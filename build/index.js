@@ -2028,7 +2028,7 @@ __webpack_require__.r(__webpack_exports__);
     foreground: "#fff",
     background: "#4c967d"
   },
-  title: "MultiImage",
+  title: "Gallary",
   edit: _blocks_multipleImage_edit__WEBPACK_IMPORTED_MODULE_16__["default"],
   save: _blocks_multipleImage_save__WEBPACK_IMPORTED_MODULE_17__["default"],
   attributes: _blocks_multipleImage_block_json__WEBPACK_IMPORTED_MODULE_9__.attributes,
