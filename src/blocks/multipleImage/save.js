@@ -35,7 +35,7 @@ export default function MultipleImageSave({ attributes, setAttributes }) {
 	return (
 		gallary && (
 			<div
-				className="mt-10 flex gap-5 bg-black p-5"
+				className="mt-10 flex flex-wrap w-full md:w-auto  gap-5 bg-black p-5"
 				// style={{
 				// 	width: "100%",
 				// 	display: "flex",
@@ -58,6 +58,7 @@ export default function MultipleImageSave({ attributes, setAttributes }) {
 							src={image.url}
 							alt={image.alt}
 							key={index}
+							className="md:w-auto w-full"
 							style={{
 								height: `${ImageHeight}px`,
 								width: `${ImageWidth}px`,

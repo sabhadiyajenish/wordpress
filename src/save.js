@@ -29,8 +29,13 @@ export default function save({ attributes, setAttributes }) {
 	console.log("save jenish", attributes);
 	return (
 		<div {...useBlockProps.save()} className="w-full m-0 p-0">
-			<h3 style={{ background: gradiuntColor }}>{text}</h3>
-			<div>
+			<h3
+				style={{ background: gradiuntColor }}
+				className="p-10 mt-5 text-neutral-700"
+			>
+				{text}
+			</h3>
+			{/* <div>
 				<RichText.Content
 					style={{ color: colorPelete }}
 					tagName={tag}
@@ -43,31 +48,7 @@ export default function save({ attributes, setAttributes }) {
 				className="our-content"
 				value={multiParagraph}
 				multiline="p"
-			/>
-			{imageOne && (
-				<div>
-					<h2>Preview</h2>
-					<img src={imageOne} alt="Preview" height={300} width={300} />
-				</div>
-			)}
-			{Array.isArray(imageMulti) && imageMulti.length !== 0 && (
-				<div className="mt-5">
-					<h2 className="mt-10">Preview Images</h2>
-					<div className="flex gap-5 mt-20 w-full bg-slate-500">
-						{imageMulti?.map((item, key) => {
-							return (
-								<img
-									src={item}
-									key={key}
-									alt="Preview"
-									width={200}
-									height={200}
-								/>
-							);
-						})}
-					</div>
-				</div>
-			)}
+			/> */}
 		</div>
 	);
 }

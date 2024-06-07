@@ -443,7 +443,7 @@ export default function Edit({ attributes, setAttributes }) {
 				<ToolbarGroup controls={layoutControls} />
 			</BlockControls>
 			<div>
-				<AnglePickerControl value={angle} onChange={setAngle} />
+				{/* <AnglePickerControl value={angle} onChange={setAngle} /> */}
 				{/* <Animate type="slide-in" options={{ origin: "center" }}>
 					{({ className }) => (
 						<Notice className={className} status="success">
@@ -460,7 +460,7 @@ export default function Edit({ attributes, setAttributes }) {
 				>
 					{text}
 				</h1>
-				<div>
+				{/* <div>
 					<RichText
 						tagName={tag}
 						value={content}
@@ -486,57 +486,14 @@ export default function Edit({ attributes, setAttributes }) {
 					onChange={(v) => setAttributes({ multiParagraph: v })}
 					allowedFormats={["core/bold", "core/italic", "core/link"]}
 					placeholder={__("Add Paragraph..", "thirdblock3")}
-				/>
-				<h1 style={{ color: headColor }}>Jay Hind Jay Bharat</h1>
-				<h2 className=" text-[50px] bg-slate-500">Native infotech</h2>
-				<h5>Lets do something new for our office</h5>
-				{imageOne && (
-					<div>
-						<h2>Preview</h2>
-						<img
-							src={imageOne}
-							alt="Preview"
-							height={headWidth[1]}
-							width={headWidth[0]}
-							style={{ borderRadius: headWidth[2] + "px" }}
-						/>
-					</div>
-				)}
-				{Array.isArray(imageMulti) && imageMulti.length !== 0 && (
-					<div className="mt-5">
-						<h2>Preview Images</h2>
-						<div className="flex gap-5">
-							{imageMulti?.map((item, key) => {
-								return (
-									<img
-										src={item}
-										key={key}
-										alt="Preview"
-										height={headHeight[1]}
-										width={headHeight[0]}
-										style={{ borderRadius: headHeight[2] + "px" }}
-									/>
-								);
-							})}
-						</div>
-					</div>
-				)}
-				<div>
-					{linesData?.map((item, key) => {
-						return (
-							<p key={key} style={{ fontSize: "25px" }}>
-								{item}
-							</p>
-						);
-					})}
-				</div>
+				/> */}
 			</div>
-			<InnerBlocks
+			{/* <InnerBlocks
 				template={[
 					["create-block/imageblog"],
 					["create-block/multipleimageblog", "create-block/paragraphblog"],
 				]}
-			/>
+			/> */}
 		</>
 	);
 }

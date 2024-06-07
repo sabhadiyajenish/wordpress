@@ -1,0 +1,67 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/listblog",
+  "version": "0.1.0",
+  "title": "P tag",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "A block for list tags.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "align": true,
+    "anchor": true
+  },
+  "attributes": {
+    "ParagrapText": {
+      "type": "string",
+      "default": ""
+    },
+    "ParagrapTextSize": {
+      "type": "number",
+      "default": 20
+    },
+    "ParagrapTextAlign": {
+      "type": "string"
+    },
+    "ParagrapTextColor": {
+      "type": "string"
+    },
+    "ParagrapBgColor": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string",
+      "default": "h1"
+    },
+    "listStyle": {
+      "type": "string",
+      "default": "disc"
+    },
+    "Radius": {
+      "type": "number",
+      "default": 0
+    },
+    "paddings": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "bottom": "0px",
+        "left": "0px",
+        "right": "0px"
+      }
+    },
+    "margins": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "bottom": "0px",
+        "left": "0px",
+        "right": "0px"
+      }
+    }
+  },
+  "textdomain": "listblock",
+  "editorScript": "file:../../index.js"
+}
