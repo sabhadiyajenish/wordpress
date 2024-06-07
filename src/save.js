@@ -5,8 +5,6 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps, RichText } from "@wordpress/block-editor";
-import "./editor.scss";
-import "./tailwind.css";
 /**
  * The save function defines the way in which the different attributes should
  * be combined into the final markup, which is then serialized by the block
@@ -54,8 +52,8 @@ export default function save({ attributes, setAttributes }) {
 			)}
 			{Array.isArray(imageMulti) && imageMulti.length !== 0 && (
 				<div className="mt-5">
-					<h2>Preview Images</h2>
-					<div className="flex gap-5 w-full">
+					<h2 className="mt-10">Preview Images</h2>
+					<div className="flex gap-5 mt-20 w-full bg-slate-500">
 						{imageMulti?.map((item, key) => {
 							return (
 								<img

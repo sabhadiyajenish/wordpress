@@ -14,10 +14,8 @@ import { pin, list, grid, paragraph, heading, image } from "@wordpress/icons";
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./style.scss";
-import "tailwindcss/tailwind.css";
-/**
- * Internal dependencies
- */
+// import "./tailwind.css";
+
 import Edit from "./edit";
 import save from "./save";
 import metadata from "./block.json";

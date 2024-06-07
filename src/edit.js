@@ -18,6 +18,7 @@ import {
 	BlockControls,
 	AlignmentToolbar,
 	PanelColorSettings,
+	InnerBlocks,
 } from "@wordpress/block-editor";
 import {
 	PanelBody,
@@ -530,6 +531,12 @@ export default function Edit({ attributes, setAttributes }) {
 					})}
 				</div>
 			</div>
+			<InnerBlocks
+				template={[
+					["create-block/imageblog"],
+					["create-block/multipleimageblog", "create-block/paragraphblog"],
+				]}
+			/>
 		</>
 	);
 }

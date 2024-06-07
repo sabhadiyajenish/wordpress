@@ -5,9 +5,9 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps, RichText } from "@wordpress/block-editor";
-import "../../editor.scss";
+// import "../../tailwind.css";
 import "./editor.scss";
-import "../../tailwind.css";
+
 /**
  * The save function defines the way in which the different attributes should
  * be combined into the final markup, which is then serialized by the block
@@ -35,21 +35,22 @@ export default function MultipleImageSave({ attributes, setAttributes }) {
 	return (
 		gallary && (
 			<div
-				style={{
-					width: "100%",
-					display: "flex",
-					gap: "20px",
-					flexWrap: "wrap",
-					justifyContent: `${
-						ImageAlign === "center"
-							? "center"
-							: ImageAlign === "left"
-							? "flex-start"
-							: "flex-end"
-					}`,
-					backgroundColor: ImageBgColor,
-					margin: `${margins.top} ${margins.left} ${margins.right} ${margins.bottom}`,
-				}}
+				className="mt-10 flex gap-5 bg-black p-5"
+				// style={{
+				// 	width: "100%",
+				// 	display: "flex",
+				// 	gap: "20px",
+				// 	flexWrap: "wrap",
+				// 	justifyContent: `${
+				// 		ImageAlign === "center"
+				// 			? "center"
+				// 			: ImageAlign === "left"
+				// 			? "flex-start"
+				// 			: "flex-end"
+				// 	}`,
+				// 	backgroundColor: ImageBgColor,
+				// 	margin: `${margins.top} ${margins.left} ${margins.right} ${margins.bottom}`,
+				// }}
 			>
 				{gallary?.map((image, index) => {
 					return (

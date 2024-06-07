@@ -71,6 +71,5 @@
       }
     }
   },
-  "textdomain": "multipleimageblock",
-  "editorScript": "file:../../index.js"
+  "textdomain": "multipleimageblock"
 }
